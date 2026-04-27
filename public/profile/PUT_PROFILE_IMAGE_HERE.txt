@@ -1,0 +1,3 @@
+Add your profile photo here and name it profile.jpg (or update src/lib/site-content.ts).
+Recommended ratio: 4:5
+Recommended minimum size: 800x1000

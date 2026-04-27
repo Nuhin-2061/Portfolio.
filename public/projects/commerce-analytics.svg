@@ -1,0 +1,19 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e2a45"/>
+      <stop offset="100%" stop-color="#0a101d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg2)"/>
+  <rect x="92" y="74" width="1016" height="572" rx="18" fill="#0f1a2d" stroke="#5a83c7" stroke-opacity="0.48"/>
+  <rect x="126" y="112" width="948" height="62" rx="10" fill="#162845"/>
+  <rect x="126" y="210" width="450" height="398" rx="12" fill="#162845"/>
+  <rect x="606" y="210" width="468" height="190" rx="12" fill="#162845"/>
+  <rect x="606" y="418" width="468" height="190" rx="12" fill="#162845"/>
+  <polyline points="162,528 236,472 312,498 384,430 472,380 542,330" stroke="#69a6ff" stroke-width="8" fill="none"/>
+  <rect x="636" y="246" width="200" height="12" rx="6" fill="#69a6ff"/>
+  <rect x="636" y="270" width="290" height="8" rx="4" fill="#829abf"/>
+  <rect x="636" y="454" width="200" height="12" rx="6" fill="#69a6ff"/>
+  <rect x="636" y="478" width="310" height="8" rx="4" fill="#829abf"/>
+</svg>

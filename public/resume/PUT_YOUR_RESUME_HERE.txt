@@ -1,0 +1,6 @@
+Place your resume PDF file in this folder with this exact name:
+
+al-sadique-nuhin-resume.pdf
+
+Path used by the website:
+/public/resume/al-sadique-nuhin-resume.pdf
