@@ -348,8 +348,23 @@ img {
 .typing::after {
   content: "|";
   margin-left: 6px;
-  color: var(--accent);
+  color: currentColor;
   animation: blink 1s step-end infinite;
+}
+
+.typing.color-0 {
+  color: var(--accent);
+  text-shadow: 0 0 18px rgba(0, 245, 212, 0.55);
+}
+
+.typing.color-1 {
+  color: var(--accent-2);
+  text-shadow: 0 0 18px rgba(255, 77, 157, 0.55);
+}
+
+.typing.color-2 {
+  color: var(--accent-3);
+  text-shadow: 0 0 18px rgba(185, 255, 106, 0.55);
 }
 
 .eyebrow {

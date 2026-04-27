@@ -82,9 +82,17 @@ handleScroll();
 
 if (typingTarget) {
   const typingWords = typingTarget.dataset.words.split(",");
+  const colorClasses = ["color-0", "color-1", "color-2"];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
+
+  function updateTypingColor() {
+    typingTarget.classList.remove(...colorClasses);
+    typingTarget.classList.add(colorClasses[wordIndex % colorClasses.length]);
+  }
+
+  updateTypingColor();
 
   function typeLoop() {
     const currentWord = typingWords[wordIndex];
@@ -99,12 +107,13 @@ if (typingTarget) {
       isDeleting = !isDeleting;
       if (!isDeleting) {
         wordIndex = (wordIndex + 1) % typingWords.length;
+        updateTypingColor();
       }
     }
 
-    const delay = isDeleting ? 60 : 90;
-    const pause = !isDeleting && charIndex === currentWord.length ? 1200 : delay;
-    const finalDelay = isDeleting && charIndex === 0 ? 500 : pause;
+    const delay = isDeleting ? 90 : 150;
+    const pause = !isDeleting && charIndex === currentWord.length ? 1700 : delay;
+    const finalDelay = isDeleting && charIndex === 0 ? 800 : pause;
     setTimeout(typeLoop, finalDelay);
   }
 
