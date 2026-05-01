@@ -9,9 +9,9 @@
   </head>
   <body>
     <div class="scroll-progress" aria-hidden="true"></div>
-    <div class="bg-orb orb-1" aria-hidden="true"></div>
-    <div class="bg-orb orb-2" aria-hidden="true"></div>
-    <div class="bg-orb orb-3" aria-hidden="true"></div>
+    <div class="bg-orb orb-1" data-speed="0.5" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" data-speed="0.35" aria-hidden="true"></div>
+    <div class="bg-orb orb-3" data-speed="0.6" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
 
     <header class="site-header" id="top">
@@ -36,8 +36,10 @@
       </nav>
     </header>
 
+    <div class="nav-backdrop" aria-hidden="true"></div>
+
     <main>
-      <section id="hero" class="section hero">
+      <section id="hero" class="section hero" data-stagger>
         <div class="container hero-grid">
           <div class="hero-content reveal">
             <p class="eyebrow">Dhaka, Bangladesh</p>
@@ -91,7 +93,7 @@
         </div>
       </section>
 
-      <section id="about" class="section">
+      <section id="about" class="section" data-stagger>
         <div class="container">
           <div class="section-heading reveal">
             <p>About Me</p>
@@ -204,20 +206,37 @@
         </div>
       </section>
 
-      <section id="projects" class="section">
+      <section id="projects" class="section" data-stagger>
         <div class="container">
           <div class="section-heading reveal">
             <p>Projects</p>
             <h3>Selected work with premium presentation</h3>
           </div>
           <div class="projects-grid">
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="0">
+              <div class="project-cover" data-type="career">
+                <span class="project-tag">Career Platform</span>
+              </div>
               <div class="project-meta">
                 <h4>Career Bridge</h4>
                 <p class="project-desc">
                   A career guidance platform that connects students with curated
                   job paths, mentors, and learning resources.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">Front-End</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">UX Flow</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">HTML/CSS/JS</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>HTML</span>
@@ -229,13 +248,30 @@
                 <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </article>
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="120">
+              <div class="project-cover" data-type="ops">
+                <span class="project-tag">Operations Suite</span>
+              </div>
               <div class="project-meta">
                 <h4>Tourist Management System</h4>
                 <p class="project-desc">
                   A tourism workflow system for trip planning, booking, and
                   itinerary management with intuitive dashboards.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">UI Design</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">Workflow</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">Java/SQL</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>Java</span>
@@ -247,13 +283,30 @@
                 <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </article>
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="240">
+              <div class="project-cover" data-type="game">
+                <span class="project-tag">Interactive Game</span>
+              </div>
               <div class="project-meta">
                 <h4>Plane Game</h4>
                 <p class="project-desc">
                   A fast-paced 2D arcade game featuring smooth controls and
                   responsive animations for browser play.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">Front-End</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">Motion</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">JS/Canvas</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>JavaScript</span>
@@ -265,13 +318,30 @@
                 <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </article>
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="0">
+              <div class="project-cover" data-type="finance">
+                <span class="project-tag">Finance Insights</span>
+              </div>
               <div class="project-meta">
                 <h4>Smart Expense Tracker</h4>
                 <p class="project-desc">
                   A finance tracker that visualizes spending habits with smart
                   categorization and monthly insights.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">Front-End</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">Data</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">JS/Charts</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>JavaScript</span>
@@ -283,13 +353,30 @@
                 <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </article>
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="120">
+              <div class="project-cover" data-type="ops">
+                <span class="project-tag">Operations Suite</span>
+              </div>
               <div class="project-meta">
                 <h4>Agriculture Management System</h4>
                 <p class="project-desc">
                   A management platform for organizing crop, resource, and operational
                   records with practical data flow.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">System Design</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">Operations</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">Java/SQL</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>Java</span>
@@ -301,13 +388,30 @@
                 <a class="btn primary" href="#" target="_blank" rel="noopener">Live Demo</a>
               </div>
             </article>
-            <article class="project-card reveal">
+            <article class="project-card reveal" data-delay="240">
+              <div class="project-cover" data-type="health">
+                <span class="project-tag">Health Platform</span>
+              </div>
               <div class="project-meta">
                 <h4>Hospital Management System</h4>
                 <p class="project-desc">
                   A service-oriented system for managing patient records, scheduling
                   workflows, and core hospital operations.
                 </p>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <p class="metric-label">Role</p>
+                  <p class="metric-value">Architecture</p>
+                </div>
+                <div>
+                  <p class="metric-label">Focus</p>
+                  <p class="metric-value">Workflows</p>
+                </div>
+                <div>
+                  <p class="metric-label">Stack</p>
+                  <p class="metric-value">Java/MySQL</p>
+                </div>
               </div>
               <div class="chip-row">
                 <span>Java</span>
@@ -433,7 +537,7 @@
         </div>
       </section>
 
-      <section id="contact" class="section">
+      <section id="contact" class="section" data-stagger>
         <div class="container">
           <div class="section-heading reveal">
             <p>Contact</p>

@@ -1,11 +1,16 @@
 const navLinks = document.querySelectorAll(".nav-link");
 const menuToggle = document.querySelector(".menu-toggle");
 const navList = document.querySelector(".nav-links");
+const navBackdrop = document.querySelector(".nav-backdrop");
 const revealItems = document.querySelectorAll(".reveal");
 const typingTarget = document.querySelector(".typing");
 const sections = [...document.querySelectorAll("section")];
 const header = document.querySelector(".site-header");
 const progressBar = document.querySelector(".scroll-progress");
+const orbs = document.querySelectorAll(".bg-orb");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isSmallScreen = window.matchMedia("(max-width: 900px)").matches;
+const staggerSections = document.querySelectorAll("[data-stagger]");
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -19,7 +24,24 @@ const observer = new IntersectionObserver(
   { threshold: 0.2 }
 );
 
-revealItems.forEach((item) => observer.observe(item));
+staggerSections.forEach((section) => {
+  const step = Number(section.dataset.staggerStep || 90);
+  const staggerItems = [...section.querySelectorAll(".reveal")];
+  staggerItems.forEach((item, index) => {
+    if (item.dataset.delay) {
+      return;
+    }
+    item.style.setProperty("--reveal-delay", `${index * step}ms`);
+  });
+});
+
+revealItems.forEach((item) => {
+  const delay = item.dataset.delay;
+  if (delay) {
+    item.style.setProperty("--reveal-delay", `${delay}ms`);
+  }
+  observer.observe(item);
+});
 
 const sectionObserver = new IntersectionObserver(
   (entries) => {
@@ -37,27 +59,42 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((section) => sectionObserver.observe(section));
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = navList.classList.toggle("open");
+function setMenuState(isOpen) {
+  navList.classList.toggle("open", isOpen);
   menuToggle.classList.toggle("open", isOpen);
   menuToggle.setAttribute("aria-expanded", isOpen);
+  document.body.classList.toggle("nav-open", isOpen);
+  if (navBackdrop) {
+    navBackdrop.classList.toggle("show", isOpen);
+  }
+}
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = !navList.classList.contains("open");
+  setMenuState(isOpen);
 });
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navList.classList.remove("open");
-    menuToggle.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    setMenuState(false);
   });
 });
 
 document.addEventListener("click", (event) => {
-  if (!navList.contains(event.target) && !menuToggle.contains(event.target)) {
-    navList.classList.remove("open");
-    menuToggle.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+  if (
+    navList.classList.contains("open") &&
+    !navList.contains(event.target) &&
+    !menuToggle.contains(event.target)
+  ) {
+    setMenuState(false);
   }
 });
+
+if (navBackdrop) {
+  navBackdrop.addEventListener("click", () => {
+    setMenuState(false);
+  });
+}
 
 let ticking = false;
 
@@ -79,6 +116,34 @@ window.addEventListener("scroll", () => {
 });
 
 handleScroll();
+
+let parallaxX = 0;
+let parallaxY = 0;
+let parallaxTicking = false;
+
+function updateParallax() {
+  orbs.forEach((orb) => {
+    const speed = Number(orb.dataset.speed || 0.4);
+    const offsetX = parallaxX * speed;
+    const offsetY = parallaxY * speed;
+    orb.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+  });
+  parallaxTicking = false;
+}
+
+if (!prefersReducedMotion && !isSmallScreen) {
+  window.addEventListener("mousemove", (event) => {
+    const x = (event.clientX / window.innerWidth - 0.5) * 40;
+    const y = (event.clientY / window.innerHeight - 0.5) * 40;
+    parallaxX = x;
+    parallaxY = y;
+
+    if (!parallaxTicking) {
+      window.requestAnimationFrame(updateParallax);
+      parallaxTicking = true;
+    }
+  });
+}
 
 if (typingTarget) {
   const typingWords = typingTarget.dataset.words.split(",");
